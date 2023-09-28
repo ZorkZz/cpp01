@@ -20,7 +20,7 @@ OBJ = $(SRC:%.cpp=%.zizi)
 
 RM = rm -rf
 
-CFLAGS = -Wall -Werror -Wextra -g3
+CFLAGS = -Wall -Werror -Wextra -std=c++98 -g3
 
 CC = c++
 
