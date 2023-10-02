@@ -19,10 +19,11 @@ int	main(int ac, char **av)
 	file_name = av[1];
 	to_find = av[2];
 	to_replace = av[3];
-	file.open(file_name);
+	file.open(file_name.c_str());
 	if (file.is_open())
 	{
-		new_file.open(file_name + ".replace");
+		file_name += ".replace";
+		new_file.open(file_name.c_str());
 		while (std::getline(file, line, '\n'))
 		{
 			new_file << repalce_string(line, to_find, to_replace) << std::endl;

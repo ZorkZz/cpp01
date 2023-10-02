@@ -2,6 +2,10 @@
 
 Harl::Harl(void)
 {
+	this->ptr[0] = &Harl::debug;
+	this->ptr[1] = &Harl::info;
+	this->ptr[2] = &Harl::warning;
+	this->ptr[3] = &Harl::error;
 }
 
 Harl::~Harl(void)
@@ -10,20 +14,16 @@ Harl::~Harl(void)
 
 void	Harl::complain(std::string level)
 {
-	std::map <std::string, void (Harl::*)()>call_function =
+	std::string	str[4];
+
+	str[0] = "DEBUG";
+	str[1] = "INFO";
+	str[2] = "WARNING";
+	str[3] = "ERROR";
+	for (size_t i = 0; i < 4; i++)
 	{
-		{"DEBUG", &Harl::debug},
-		{"INFO", &Harl::info},
-		{"WARNING", &Harl::warning},
-		{"ERROR", &Harl::error}
-	};
-	try
-	{
-		(this->*call_function.at(level))();
-	}
-	catch (const std::out_of_range &e)
-	{
-		std::cout << "ERROR: " << std::endl;
+		if (str[i] == level)
+			(this->*ptr[i])();	
 	}
 }
 
