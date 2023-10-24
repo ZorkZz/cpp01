@@ -1,10 +1,8 @@
 #include "HumanA.hpp"
 
 //constructor
-HumanA::HumanA(std::string name, Weapon	weapon)
+HumanA::HumanA(std::string name, Weapon	&weapon): _weapon(weapon), _name(name)
 {
-	this->_name = name;
-	this->_weapon = weapon;
 }
 
 //destructor
